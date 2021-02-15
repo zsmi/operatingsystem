@@ -7,7 +7,7 @@ name: Build_Documents
 on: [push, workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:  
+jobs:
   build-project:
 
     # The type of runner that the job will run on
@@ -15,8 +15,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout project and transforms
-        uses: actions/checkout@v2 
-        with: 
+        uses: actions/checkout@v2
+        with:
           submodules: true
       - name: Set up Python 3
         uses: actions/setup-python@v2
@@ -40,15 +40,9 @@ jobs:
             ./output/${PWD##*/}-release.pdf;
       - name: Make Zip Output Directory
         run: mkdir -p commoncriteria
-      - name: Package it up
-        run: echo ${GITHUB_REPOSITORY} && cd output && zip -r ../${GITHUB_REPOSITORY}.zip .
-      - name: Update release
-        uses: johnwbyrd/update-release@v1.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: ./${{ github.repository }}.zip 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          branch: gh-pages # The branch the action should deploy to.
+          repository-name: zsmi/zsmi.github.io
+          branch: master # The branch the action should deploy to.
           folder: output # The folder the action should deploy.
