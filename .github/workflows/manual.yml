@@ -25,7 +25,7 @@ jobs:
             python-version: '3.x'
 
       - name: Install lib
-        run: sudo apt-get install -y python3-bs4 xsltproc
+        run: sudo apt-get update && sudo apt-get install -y python3-bs4 xsltproc
 
       - name: Debug
         run: echo "The trigger was " ${{ github.event_name }}
@@ -35,7 +35,7 @@ jobs:
 
       - name: Install PDFifier
         if: ${{ github.event_name == 'workflow_dispatch' }}
-        run: sudo apt-get install -y xvfb libfontconfig wkhtmltopdf
+        run: sudo apt-get update && sudo apt-get install -y xvfb libfontconfig wkhtmltopdf
 
       - name: PDFify
         if: ${{ github.event_name == 'workflow_dispatch' }}
