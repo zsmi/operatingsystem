@@ -62,9 +62,11 @@ jobs:
 
       - name: Make GitHub Pages PP directory
         run: mkdir -p commoncriteria.github.io/pp/$(basename $GITHUB_REPOSITORY)
+
       - name: Deleting previous version of PP documents
         run: rm -rf commoncriteria.github.io/pp/$(basename $GITHUB_REPOSITORY)/*
-      -name: Copy newest version of PP into Github Pages
+
+      - name: Copy newest version of PP into Github Pages
         run: cp -r output/* commoncriteria.github.io/pp/$(basename $GITHUB_REPOSITORY)
 
       - name: Deploy 🚀
