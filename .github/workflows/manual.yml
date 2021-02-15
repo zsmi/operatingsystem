@@ -61,6 +61,7 @@ jobs:
       - name: Create PDFs
         #if: ${{ github.event_name == 'workflow_dispatch' }}
         run: ./ci-scripts/generate_pdfs.sh
+        run: ls commoncriteria.github.io/pp/$(basename $GITHUB_REPOSITORY)
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
