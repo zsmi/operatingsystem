@@ -60,10 +60,17 @@ jobs:
       - name: Make CI Scripts Executable
         run: chmod 700 ci-scripts/generate_pdfs.sh && chmod 700 ci-scripts/create_site.sh
 
+      - name: Make GitHub Pages PP directory
+        run: mkdir -p commoncriteria.github.io/pp/$(basename $GITHUB_REPOSITORY)
+      - name: Deleting previous version of PP documents
+        run: rm -rf commoncriteria.github.io/pp/$(basename $GITHUB_REPOSITORY)/*
+      -name: Copy newest version of PP into Github Pages
+        run: cp -r output/* commoncriteria.github.io/pp/$(basename $GITHUB_REPOSITORY)
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
           repository-name: zsmi/zsmi.github.io
           branch: master # The branch the action should deploy to.
-          folder: output # The folder the action should deploy.
+          folder: commoncriteria.github.io # The folder the action should deploy.
           token: ${{ secrets.DEPLOY_TOKEN }}
