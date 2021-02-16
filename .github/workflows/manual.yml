@@ -19,10 +19,10 @@ jobs:
         with:
           submodules: true
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v2
-        with:
-            python-version: '3.x'
+      #- name: Set up Python 3
+      #  uses: actions/setup-python@v2
+      #  with:
+      #      python-version: '3.x'
 
       - name: Install Build Packages
         run: sudo apt-get update && sudo apt-get install -y libfontconfig python3-bs4 wkhtmltopdf xsltproc xvfb
