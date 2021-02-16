@@ -19,11 +19,6 @@ jobs:
         with:
           submodules: true
 
-      #- name: Set up Python 3
-      #  uses: actions/setup-python@v2
-      #  with:
-      #      python-version: '3.x'
-
       - name: Install Build Packages
         run: sudo apt-get update && sudo apt-get install -y libfontconfig python3-bs4 wkhtmltopdf xsltproc xvfb
 
@@ -68,7 +63,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          repository-name: zsmi/zsmi.github.io
+          repository-name: commoncriteria/commoncriteria.github.io
           branch: master # The branch the action should deploy to.
           folder: commoncriteria.github.io # The folder the action should deploy.
           token: ${{ secrets.DEPLOY_TOKEN }}
